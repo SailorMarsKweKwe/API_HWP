@@ -87,23 +87,20 @@ namespace IMneRestAPI
             request.AddFile("content", "/Users/innasukhina/Desktop/DSC_3009.JPG");
             IRestResponse response = client.Execute(request);
         }
-        [Fact]
-        public void ResponseStatusTest()
-        {
-            var headers = new Dictionary<string, string>
-            {
-                { "Content-Type", "application/json"},
-                { "authority","api.newbookmodels.com"}
-            };
-            var body = new Dictionary<string, string>
-            {
-                { "password", "123qweR!"},
-                { "email", "innasukhina@gmail.com"}
-            };
-
-            var response = API_HELPER.SendApiRequest(body, headers, "https://api.newbookmodels.com/api/v1/auth/signin/", Method.POST);
-            ResponseStatus contents = JsonSerializer.Deserialize<ResponseStatus>(response.Content);
-        }
+        //[Fact]
+        //public void ResponseStatusTest()
+        //{
+            //var headers = new Dictionary<string, string>
+            //{
+               // { "Content-Type", "application/json"},
+               // { "authority","api.newbookmodels.com"}
+           // };
+           // var body = new Dictionary<string, string>
+            //{
+              //  { "password", "123qweR!"},
+              //  { "email", "innasukhina@gmail.com"}
+           // };
+       // }
     }
 
 }
