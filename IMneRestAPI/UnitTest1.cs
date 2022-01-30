@@ -1,56 +1,35 @@
 ﻿using System;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System.Collections;
 using System.Collections.Generic;
 using RestSharp;
 using Xunit;
-using System.Text.Json;
 using System.Net;
-using RestSharp.Extensions;
 using System.IO;
-using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace IMneRestAPI
 {
     public class UnitTest1
     {
         [Fact]
-        public void ExtractAndAddCookiesTest()
+        
+        // Тест на добавление нового списка в избранное.
+        public void AddNewListToFavoritsTest()
         {
-            // Set data for API request.
-            var body = new Dictionary<string, string>
+            GetAuthorizToken authorizToken = new GetAuthorizToken();
+            authorizToken.GetToken();
+              
+              var headersFavorites = new Dictionary<string, string>
             {
-                {"ulogin", "art1613122" },
-                {"upassword", "505558545"}
+                {"authorization", authorizToken.Token}
             };
-            var headers = new Dictionary<string, string>
+            var bodyFav = new Dictionary<string, string>
             {
-                {"Content-Type", "application/x-www-form-urlencoded"}
+                {"description", "beauty" },
+                {"name", "LovelyBoys"}
             };
-
-            // Send API login.
-            var response = API_HELPER.SendApiRequest(body, headers, "https://my.soyuz.in.ua", Method.POST);
-
-            // Get Cookie from API response.
-            var cookie = API_HELPER.ExtractCookie(response, "zbs_lang");
-            var cookie2 = API_HELPER.ExtractCookie(response, "ulogin");
-            var cookie3 = API_HELPER.ExtractCookie(response, "upassword");
-
-            // Open browser.
-            IWebDriver driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("https://my.soyuz.in.ua");
-            System.Threading.Thread.Sleep(3000);
-
-            // Set Cookie to browser.
-            driver.Manage().Cookies.AddCookie(cookie);
-            driver.Manage().Cookies.AddCookie(cookie2);
-            driver.Manage().Cookies.AddCookie(cookie3);
-
-            // Open Site (profile page) & close browser.
-            driver.Navigate().GoToUrl("https://my.soyuz.in.ua/index.php");
-            System.Threading.Thread.Sleep(15000);
-            driver.Close();
+            // Отправка запроса на добавление нового списка в избранное.
+            var responseAddNewList = API_HELPER.SendApiRequest(bodyFav, headersFavorites, "https://api.newbookmodels.com/api/v1/folders/", Method.POST);
+            Console.WriteLine(responseAddNewList);
+            
         }
         [Fact]
         public void DownLoadImageTest()
@@ -61,52 +40,51 @@ namespace IMneRestAPI
             File.WriteAllBytes(Path.Combine("/Users/innasukhina/Projects/API_HWP/API_HWP/IMneRestAPI/img.JPG"), result);
 
         }
+        // Проверка загрузки изображения с помощью токена.
         [Fact]
-        public void UploadImageTest()
+        public void UploadImageWithTokenTest()
         {
-            var body = new Dictionary<string, object>
-            {
-                {"login", "NimeriaTheDirewolf" },
-                {"password", "291188a" },
-                 {"img", "/Users/innasukhina/Desktop/DSC_3009.JPG" }
-            };
+            GetAuthorizToken authorizToken = new GetAuthorizToken();
+            authorizToken.GetToken(); 
+            
             var headers = new Dictionary<string, string>
             {
-                { "Content-Type", "application/json" }
+                { "Content-Type", "multipart/form-data" },
+                {"authorization", authorizToken.Token}
             };
+            var responseUpload = API_HELPER.UploadFile("https://api.newbookmodels.com/api/images/upload/",
+                "../../../images/Einstein.jpeg", headers, "image/jpeg", "file");
+            Console.WriteLine(responseUpload);
+        }
 
-            var response = API_HELPER.UploadImageApiRequest(body, headers, "https://imageup.ru/", Method.POST);
-        }
-        [Fact]
-        public void UploadImageTest2()
-        {
-            var client = new RestClient("https://imgbb.com/");
-            var request = new RestRequest(Method.POST);
-            request.RequestFormat = DataFormat.Json;
-            request.AddHeader("Content-Type", "multipart/form-data");
-            request.AddFile("content", "/Users/innasukhina/Desktop/DSC_3009.JPG");
-            IRestResponse response = client.Execute(request);
-        }
         [Fact]
         public void DownloadImageTest2()
         {
             WebClient client = new WebClient();
             client.DownloadFile("https://flowers.ua/images/Flowers/thumbnail/1079.jpg", @"/Users/innasukhina/Projects/API_HWP/API_HWP/IMneRestAPI/img1.JPG");
         }
-        //[Fact]
-        //public void ResponseStatusTest()
-        //{
-            //var headers = new Dictionary<string, string>
-            //{
-               // { "Content-Type", "application/json"},
-               // { "authority","api.newbookmodels.com"}
-           // };
-           // var body = new Dictionary<string, string>
-            //{
-              //  { "password", "123qweR!"},
-              //  { "email", "innasukhina@gmail.com"}
-           // };
-       // }
+
+         // Проверка скачивания изображения с помощью токена.
+        [Fact]
+        public void DouwnLoadImageWithTokenTest()
+        {
+            GetAuthorizToken authorizToken = new GetAuthorizToken();
+            authorizToken.GetToken();
+            
+            var headers = new Dictionary<string, string>
+            {
+                { "Content-Type", "multipart/form-data" },
+                {"authorization", authorizToken.Token}
+            };
+
+            var responseDownload =
+                API_HELPER.DownloadFile(
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRVJulmlLEMi2ob7AwqLtPikIXbqLoFXR_ck7_wxIfMZuDS6UZrDo0xAV8KSLDjjQ0x64&usqp=CAU",
+                    "TroTto.jpeg");
+            Console.WriteLine(responseDownload);
+
+
+        }
     }
 
 }
