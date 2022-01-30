@@ -5803,14 +5803,14 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/innasukhina/Projects/IMneRestAPI/IMneRestAPI/IMneRestAPI.csproj",
+      "projectUniqueName": "/Users/innasukhina/Projects/API_HWP/API_HWP/IMneRestAPI/IMneRestAPI.csproj",
       "projectName": "IMneRestAPI",
-      "projectPath": "/Users/innasukhina/Projects/IMneRestAPI/IMneRestAPI/IMneRestAPI.csproj",
+      "projectPath": "/Users/innasukhina/Projects/API_HWP/API_HWP/IMneRestAPI/IMneRestAPI.csproj",
       "packagesPath": "/Users/innasukhina/.nuget/packages/",
-      "outputPath": "/Users/innasukhina/Projects/IMneRestAPI/IMneRestAPI/obj/",
+      "outputPath": "/Users/innasukhina/Projects/API_HWP/API_HWP/IMneRestAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/innasukhina/.config/NuGet/NuGet.Config"
+        "/Users/innasukhina/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"

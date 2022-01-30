@@ -29,4 +29,8 @@
     <None Remove="Selenium.WebDriver.ChromeDriver" />
     <None Remove="RestSharp.Serializers.SystemTextJson" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="images" />
+  </ItemGroup>
 </Project>

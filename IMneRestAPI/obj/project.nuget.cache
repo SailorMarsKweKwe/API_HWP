@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "64gKatEt7Xa8BkhDbalrXwDvto1bjT0Kp4EQqFuf0M8l8LbG3Qp8vZyj+l/hFyJzz14gk9E7eo3ZiFgXgGg7HQ==",
+  "dgSpecHash": "Hiwzmc1T+JefwKrXqCpaQLiPMqN2fCmnx7BcAGuxU2CV35PJV0DYBPDmju5PQqqKTODTxo6K7ucBNzP/hhoRnA==",
   "success": true,
-  "projectFilePath": "/Users/innasukhina/Projects/IMneRestAPI/IMneRestAPI/IMneRestAPI.csproj",
+  "projectFilePath": "/Users/innasukhina/Projects/API_HWP/API_HWP/IMneRestAPI/IMneRestAPI.csproj",
   "expectedPackageFiles": [
     "/Users/innasukhina/.nuget/packages/coverlet.collector/3.0.2/coverlet.collector.3.0.2.nupkg.sha512",
     "/Users/innasukhina/.nuget/packages/microsoft.codecoverage/16.9.4/microsoft.codecoverage.16.9.4.nupkg.sha512",

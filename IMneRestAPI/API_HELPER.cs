@@ -4,13 +4,14 @@ using OpenQA.Selenium.Chrome;
 using System.Collections;
 using System.Collections.Generic;
 using RestSharp;
+using RestSharp.Extensions;
 
 namespace IMneRestAPI
 {
     public static class API_HELPER
     {
-        // The method that sends the request.
-        public static IRestResponse SendApiRequest(object body, Dictionary<string, string> headers, string link, Method type)
+        // Метод, который отправляет запрос.
+        public static string SendApiRequest(object body, Dictionary<string, string> headers, string link, Method type)
         {
             RestClient client = new RestClient(link)
             {
@@ -43,7 +44,7 @@ namespace IMneRestAPI
                 request.RequestFormat = DataFormat.Json;
             }
             IRestResponse response = client.Execute(request);
-            return response;
+            return HandleApiError(response);
         }
         // Method that extract cookies in res.
         public static Cookie ExtractCookie(IRestResponse response, string cookieName)
@@ -63,7 +64,7 @@ namespace IMneRestAPI
             return res;
         }
         // Method that upload image to website.
-        public static IRestResponse UploadImageApiRequest(object body, Dictionary<string, string> headers, string link, Method type)
+        public static string UploadImageApiRequest(object body, Dictionary<string, string> headers, string link, Method type)
         {
             RestClient client = new RestClient(link)
             {
@@ -77,7 +78,48 @@ namespace IMneRestAPI
             request.RequestFormat = DataFormat.Json;
 
             IRestResponse response = client.Execute(request);
-            return response;
+            return HandleApiError(response);
+        }
+
+        public static string HandleApiError(IRestResponse response)
+        {
+            if (response.IsSuccessful)
+            {
+                return response.Content;
+            }
+            else
+            {
+                throw new NotImplementedException(response.Content);
+            }
+        }
+
+        public static string UploadFile(string link, string filePath, Dictionary<string, string> headers, string fileFormat, string fileParam)
+        {
+            RestClient client = new RestClient(link)
+            {
+                Timeout = 300000
+            };
+            RestRequest request = new RestRequest(Method.POST);
+            foreach (var header in headers)
+            {
+                request.AddHeader(header.Key, header.Value);
+            }
+            request.AddFile(fileParam, @filePath, fileFormat);
+            
+            IRestResponse response = client.Execute(request);
+            return HandleApiError(response);
+            
+        }
+
+        public static string DownloadFile(string link, string nameFile)
+        {
+            RestClient restClient = new RestClient(link);
+            RestRequest request = new RestRequest(Method.GET);
+            IRestResponse response = restClient.Execute(request);
+            byte[] bytes = response.RawBytes; 
+            bytes.SaveAs($"../../../images/{nameFile}"); 
+
+            return HandleApiError(response);
         }
 
     }
