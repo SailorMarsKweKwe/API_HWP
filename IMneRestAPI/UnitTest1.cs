@@ -55,10 +55,10 @@ namespace IMneRestAPI
         [Fact]
         public void DownLoadImageTest()
         {
-            RestClient client = new RestClient("https://imageup.ru/img1/3874179/dsc_2700.jpg.html");
+            RestClient client = new RestClient("https://flowers.ua/images/Flowers/71.jpg");
             var imageRequest = new RestRequest(Method.GET);
             byte[] result = client.DownloadData(imageRequest);
-            File.WriteAllBytes(Path.Combine("/Users/innasukhina/Projects/IMneRestAPI/IMneRestAPI/img.JPG"), result);
+            File.WriteAllBytes(Path.Combine("/Users/innasukhina/Projects/API_HWP/API_HWP/IMneRestAPI/img.JPG"), result);
 
         }
         [Fact]
@@ -86,6 +86,12 @@ namespace IMneRestAPI
             request.AddHeader("Content-Type", "multipart/form-data");
             request.AddFile("content", "/Users/innasukhina/Desktop/DSC_3009.JPG");
             IRestResponse response = client.Execute(request);
+        }
+        [Fact]
+        public void DownloadImageTest2()
+        {
+            WebClient client = new WebClient();
+            client.DownloadFile("https://flowers.ua/images/Flowers/thumbnail/1079.jpg", @"/Users/innasukhina/Projects/API_HWP/API_HWP/IMneRestAPI/img1.JPG");
         }
         //[Fact]
         //public void ResponseStatusTest()
