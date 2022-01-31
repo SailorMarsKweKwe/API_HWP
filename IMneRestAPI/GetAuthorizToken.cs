@@ -12,7 +12,6 @@ namespace IMneRestAPI
 
         public void GetToken()
         {
-            // Set data for API request.
             var body = new Dictionary<string, string>
             {
                 {"email", "innasukhina@gmail.com"},
@@ -22,8 +21,7 @@ namespace IMneRestAPI
             {
                 {"Content-Type", "application/x-www-form-urlencoded"}
             };
-
-            // Send API login.
+            // Отправка логина (response), преобразование в JSON и получение токина.
             var response = API_HELPER.SendApiRequest(body, headers, "https://api.newbookmodels.com/api/v1/auth/signin/",
                 Method.POST);
             Console.WriteLine(response);

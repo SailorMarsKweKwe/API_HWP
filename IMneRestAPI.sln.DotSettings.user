@@ -1,13 +1,11 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0c6e0bbc_002D027d_002D4807_002Da29f_002Dddeeb1c75830/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ExtractAndAddCookiesTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=83468e8c_002Dcb0c_002D4aae_002D8f2f_002D03771ccac4b8/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="UploadImageWithTokenTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::33893EFA-DD9E-46E8-AA0A-FA4650543A51::net5.0::IMneRestAPI.UnitTest1.ExtractAndAddCookiesTest&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::33893EFA-DD9E-46E8-AA0A-FA4650543A51::net5.0::IMneRestAPI.UnitTest1.UploadImageWithTokenTest&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=588349eb_002D0418_002D4b3f_002D8840_002D11d5beda433d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ExtractAndAddCookiesTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9b09ff9e_002Dbe85_002D45fe_002D8126_002D04d325d41849/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="DownloadImageTest2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::33893EFA-DD9E-46E8-AA0A-FA4650543A51::net5.0::IMneRestAPI.UnitTest1.ExtractAndAddTOKENTest&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::33893EFA-DD9E-46E8-AA0A-FA4650543A51::net5.0::IMneRestAPI.UnitTest1.UploadImageTest&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::33893EFA-DD9E-46E8-AA0A-FA4650543A51::net5.0::IMneRestAPI.UnitTest1.DouwnLoadImageTest&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::33893EFA-DD9E-46E8-AA0A-FA4650543A51::net5.0::IMneRestAPI.UnitTest1.DownLoadImageWithTokenTest&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
